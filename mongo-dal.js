@@ -22,7 +22,6 @@ function read(refId) {
         refId: refId
     }
     return db.collection('tasks').find(query).toArray().then((result) => {
-        console.log(result)
         return result
     })
 }
@@ -44,7 +43,6 @@ function create(refId, content) {
         refId: refId,
         content: content
     }).then((result) => {
-        console.log(result.ops)
         return result.ops
     })
 }
@@ -57,14 +55,21 @@ function update(refId, content) {
             content: content
         }
     }).then((result) => {
-        console.log(result)
         return true
     })
 }
+
+function display() {
+    return db.collection('tasks').find({}).toArray().then((result) => {
+        return (result)
+    })
+}
+
 
 module.exports = {
     read,
     del,
     create,
-    update
+    update,
+    display
 }

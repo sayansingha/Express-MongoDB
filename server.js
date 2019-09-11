@@ -42,6 +42,15 @@ app.post('/api/todo/update', (req, res) => {
         res.send("updated")
     })
 })
+
+app.get('/api/todo/read', (req, res) => {
+    mongo.display().then((result) => {
+        res.send(result)
+    })
+
+})
+
+
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`listening on port ${port}`) //it wll show 5000 because I have put "export PORT=5000"
